@@ -19,6 +19,8 @@ COPY app/ app/
 COPY templates/ templates/
 COPY mlruns/ mlruns/
 
+RUN python app/db_to_sql.py
+
 # Expose Flask port
 EXPOSE 8000
 
