@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Prédiction Iris</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      }
+      input {
+        width: 94%;
+        padding: 10px;
+        margin-top: 10px;
+        font-size: 1rem;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        font-size: 1rem;
+      }
+      #result {
+        margin-top: 20px;
+        font-weight: bold;
+        color: #008000;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>🔮 Prédire la longueur du sépale</h2>
+
+    <label for="sepal_width">Largeur du sépale (cm) :</label>
+    <input type="number" step="0.01" id="sepal_width" placeholder="Ex : 3.2" />
+
+    <button onclick="predict()">Prédire</button>
+
+    <div id="result"></div>
+
+    <script>
+      async function predict() {
+        const sepalWidth = parseFloat(
+          document.getElementById("sepal_width").value
+        );
+        const resultDiv = document.getElementById("result");
+
+        if (isNaN(sepalWidth)) {
+          resultDiv.textContent = "❌ Veuillez entrer une valeur numérique.";
+          return;
+        }
+
+        const response = await fetch("http://127.0.0.1:8000/predict", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ sepal_width: sepalWidth }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          resultDiv.textContent = `🌸 Longueur prédite : ${data.sepal_length_prediction} cm`;
+        } else {
+          resultDiv.textContent = `❌ Erreur : ${data.error}`;
+        }
+      }
+    </script>
+  </body>
+</html>

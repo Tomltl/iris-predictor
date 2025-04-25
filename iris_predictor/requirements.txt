@@ -1,0 +1,8 @@
+flask
+flask-cors
+scikit-learn
+mlflow
+gunicorn
+python-dotenv
+flask
+flask-cors

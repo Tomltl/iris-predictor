@@ -1,0 +1,15 @@
+artifact_uri: ./mlruns/0/30c83a1e6a7148599a1a3f74ba75a496/artifacts
+end_time: 1745419003070
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 30c83a1e6a7148599a1a3f74ba75a496
+run_name: treasured-squid-69
+run_uuid: 30c83a1e6a7148599a1a3f74ba75a496
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1745419001727
+status: 4
+tags: []
+user_id: tomletullier
